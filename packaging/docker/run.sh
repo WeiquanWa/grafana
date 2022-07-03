@@ -62,6 +62,7 @@ done
 
 export HOME="$GF_PATHS_HOME"
 
+
 #. Comment these lines by SEASTAR
 #. reason: plugins are installed in docker image itself
 #if [ ! -z "${GF_INSTALL_PLUGINS}" ]; then
@@ -78,6 +79,11 @@ export HOME="$GF_PATHS_HOME"
 #     fi
 #   done
 # fi
+
+# Copy plugins from tmp to grafana plugin dir
+cp -R /tmp/Grafana_Status_panel "$GF_PATHS_PLUGINS"
+cp -R /tmp/grafana-piechart-panel "$GF_PATHS_PLUGINS"
+
 
 exec grafana-server                                         \
   --homepath="$GF_PATHS_HOME"                               \

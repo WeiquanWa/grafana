@@ -83,10 +83,8 @@ RUN mkdir -p "$GF_PATHS_HOME/.aws" && \
 RUN apk add --no-cache curl wget unzip &&\
     cd /tmp && curl -k -Ls https://github.com/Vonage/Grafana_Status_panel/archive/refs/tags/v1.0.10.tar.gz | tar xz &&\
     mv Grafana_Status_panel-1.0.10 Grafana_Status_panel &&\
-    cp -R Grafana_Status_panel "$GF_PATHS_PLUGINS" &&\
     wget -nv https://grafana.com/api/plugins/grafana-piechart-panel/versions/latest/download -O grafana-piechart-panel.zip &&\
-    unzip -q grafana-piechart-panel.zip -d /tmp &&\
-    cp -R grafana-piechart-panel "$GF_PATHS_PLUGINS"
+    unzip -q grafana-piechart-panel.zip -d /tmp
 
 # PhantomJS
 COPY --from=1 /tmp/lib /lib
